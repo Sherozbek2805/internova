@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Internova – Company Panel</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+/* fade animation */
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+.fade-up{
+animation:fadeUp .6s ease forwards;
+}
+
+/* floating logo */
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
+}
+
+.float{
+animation:float 4s ease-in-out infinite;
+}
+
+/* card hover */
+
+.card{
+transition:all .3s ease;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+/* glow button */
+
+.glow:hover{
+box-shadow:0 0 20px rgba(99,102,241,.6);
+}
+
+/* chart animation */
+
+@keyframes rise{
+from{
+transform:translateY(100%);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+.bar{
+animation:rise 1s ease forwards;
+}
+
+</style>
+
+</head>
+
+
+<body class="bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] text-gray-200 min-h-screen">
+
+<!-- NAVBAR -->
+
+<header class="border-b border-white/10 bg-white/5 backdrop-blur-xl">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+<div class="flex items-center gap-3">
+
+<div class="w-9 h-9 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold float">
+IN
+</div>
+
+<span class="font-semibold">Internova</span>
+
+</div>
+
+<nav class="flex gap-8 text-sm text-gray-300">
+
+<button onclick="showPage('dashboard')" class="hover:text-white transition">
+Shahsiy Kabinet
+</button>
+
+<button onclick="showPage('internships')" class="hover:text-white transition">
+Stajirovkalar
+</button>
+
+<a href="/logout" class="text-red-400 hover:text-red-300 transition">
+Tizimdan Chiqish
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+<!-- DASHBOARD -->
+
+<div id="dashboardPage" class="fade-up">
+
+<h1 class="text-3xl font-semibold mb-8">Kompaniya paneli</h1>
+
+<!-- STATS -->
+
+<div class="grid md:grid-cols-4 gap-6 mb-12">
+
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl card">
+<p class="text-gray-400 text-sm">Ishchi o'rinlar</p>
+<p class="text-2xl font-semibold mt-2">4</p>
+</div>
+
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl card">
+<p class="text-gray-400 text-sm">Nomzodlar</p>
+<p class="text-2xl font-semibold mt-2">48</p>
+</div>
+
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl card">
+<p class="text-gray-400 text-sm">Intervyular</p>
+<p class="text-2xl font-semibold mt-2">12</p>
+</div>
+
+<div class="p-6 bg-white/5 border border-white/10 rounded-xl card">
+<p class="text-gray-400 text-sm">Ishga qabul qilinganlar</p>
+<p class="text-2xl font-semibold mt-2">3</p>
+</div>
+
+</div>
+
+<!-- CHART -->
+
+<div class="p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl card">
+
+<h2 class="text-lg font-semibold mb-8">
+Umumiy o'zgarishlar
+</h2>
+
+<div class="flex items-end justify-between h-40 gap-4 overflow-hidden">
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-20"></div>
+<span class="text-xs text-gray-400 mt-2">Dushanba</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-28"></div>
+<span class="text-xs text-gray-400 mt-2">Seshanba</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-20"></div>
+<span class="text-xs text-gray-400 mt-2">Chorshanba</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-32"></div>
+<span class="text-xs text-gray-400 mt-2">Payshanba</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-20"></div>
+<span class="text-xs text-gray-400 mt-2">Juma</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-24"></div>
+<span class="text-xs text-gray-400 mt-2">Shanba</span>
+</div>
+
+<div class="flex flex-col items-center w-full">
+<div class="w-full bar bg-gradient-to-t from-blue-500 to-purple-500 rounded h-16"></div>
+<span class="text-xs text-gray-400 mt-2">Yakshanba</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INTERNSHIPS -->
+
+<div id="internshipsPage" class="hidden space-y-6">
+
+<div class="flex justify-between items-center">
+
+<div>
+
+<h1 class="text-3xl font-semibold text-white">
+Ishchi o'rinlarni nazorat qilish
+</h1>
+
+<p class="text-sm text-gray-400">
+Har bir ish uchun nomzodlarni nazorat qilib boring
+</p>
+
+</div>
+
+<a href="/post"
+class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:scale-105 transition glow text-sm">
+Yangi ish e'loni
+</a>
+
+</div>
+
+<section class="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 shadow-lg">
+
+<div class="overflow-x-auto">
+
+<table class="w-full text-sm">
+
+<thead class="border-b border-white/10 text-gray-300 uppercase tracking-wider text-xs">
+
+<tr>
+<th class="py-3 text-left">Ish</th>
+<th>Umumiy Xolat</th>
+<th>Ariza</th>
+<th>Oxirgi Muddat</th>
+<th class="text-right">Nomzodlarni ko'rish</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-b border-white/5 hover:bg-white/10 transition">
+
+<td class="py-4 font-semibold text-white">
+Dasturlash bo'yicha amaliyot
+</td>
+
+<td>
+<span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400 font-medium">
+Aktiv
+</span>
+</td>
+
+<td class="text-gray-300">
+32
+</td>
+
+<td class="text-gray-300">
+15 - Iyul
+</td>
+
+<td class="text-right">
+
+<a href="/application/company"
+class="px-3 py-1 text-xs rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90 transition">
+Ko'rish
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+
+<script>
+
+function showPage(page){
+
+const pages = [
+"dashboardPage",
+"internshipsPage"
+]
+
+pages.forEach(p=>{
+document.getElementById(p).classList.add("hidden")
+})
+
+document.getElementById(page + "Page").classList.remove("hidden")
+
+}
+
+</script>
+
+</body>
+</html>

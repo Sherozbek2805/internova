@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ariza Topshirish – Internova</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] min-h-screen flex items-center justify-center text-gray-200">
+
+<div class="w-full max-w-lg">
+
+<div class="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-8 shadow-xl">
+
+<h2 class="text-2xl font-semibold mb-2">
+Ishga Topshirish
+</h2>
+
+<p class="text-gray-400 text-sm mb-6">
+Quyidagi ishga ariza topshirish.
+</p>
+
+<form class="space-y-4" onsubmit="applyInternship(event)">
+
+<input type="hidden" id="internship_id">
+
+<div>
+<label class="text-sm text-gray-300">To'liq ismi</label>
+
+<input id="name"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Maktab / Universitet</label>
+
+<input id="school"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Ko'nikmalari</label>
+
+<input id="skills"
+placeholder="Python, React, Design"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Nega bu ishga topshirmoqchisiz?</label>
+
+<textarea id="motivation"
+rows="4"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2"></textarea>
+</div>
+
+<button
+class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium">
+
+Arizani Yuborish
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+const params = new URLSearchParams(window.location.search)
+document.getElementById("internship_id").value = params.get("internship_id")
+
+
+async function applyInternship(e){
+
+e.preventDefault()
+
+const internship_id = document.getElementById("internship_id").value
+const name = document.getElementById("name").value
+const school = document.getElementById("school").value
+const skills = document.getElementById("skills").value
+const motivation = document.getElementById("motivation").value
+
+const res = await fetch("/api/apply",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+internship_id,
+name,
+school,
+skills,
+motivation
+})
+
+})
+
+const data = await res.json()
+
+if(data.success){
+
+alert("Ariza jo'natildi!")
+
+window.location.href="/student-dashboard"
+
+}else{
+
+alert("Xatolik yuz berdi")
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internova – Ro'yxatdan o'tish</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] min-h-screen flex items-center justify-center text-gray-200">
+
+<div class="w-full max-w-md">
+
+<!-- LOGO -->
+
+<div class="flex justify-center items-center gap-2 mb-8">
+
+<div class="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold">
+▢
+</div>
+
+<span class="text-lg font-semibold">Internova</span>
+
+</div>
+
+<!-- CARD -->
+
+<div class="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-8 shadow-xl">
+
+<h2 class="text-2xl font-semibold mb-1">
+Akkaunt Yaratish
+</h2>
+
+<p class="text-gray-400 text-sm mb-6">
+Kompaniya yoki talaba sifatida qo'shiling
+</p>
+
+<!-- ACCOUNT TYPE -->
+
+<div class="flex bg-white/10 rounded-xl p-1 mb-6">
+
+<button type="button" id="studentBtn"
+class="flex-1 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
+Talaba
+</button>
+
+<button type="button" id="companyBtn"
+class="flex-1 py-2 text-gray-400 text-sm">
+Kompaniya
+</button>
+
+</div>
+
+<form method="POST" action="/signup" class="space-y-4">
+
+<!-- ROLE -->
+
+<input type="hidden" name="role" id="role" value="student">
+
+<!-- EMAIL -->
+
+<div>
+<label class="text-sm text-gray-300">Email (Elektron pochta manzili)</label>
+<input name="email" id="email"
+type="email"
+required
+placeholder="you@email.com"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<!-- PASSWORD -->
+
+<div>
+<label class="text-sm text-gray-300">Parol</label>
+<input name="password" id="password"
+type="password"
+required
+placeholder="••••••••"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<!-- CONFIRM PASSWORD -->
+
+<div>
+<label class="text-sm text-gray-300">Parolni takrorlang</label>
+<input id="confirmPassword"
+type="password"
+required
+placeholder="••••••••"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<!-- STUDENT FIELDS -->
+
+<div id="studentFields" class="space-y-4">
+
+<div>
+<label class="text-sm text-gray-300">Ism-familya</label>
+<input name="name"
+placeholder="Alex Johnson"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Maktab/Universitet</label>
+<input name="school"
+placeholder="City High School"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Mahoratlaringiz</label>
+<input name="skills"
+placeholder="Python, React, Design"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Bitiradigan yilingiz</label>
+<input name="gradYear"
+placeholder="2027"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+</div>
+
+<!-- COMPANY FIELDS -->
+
+<div id="companyFields" class="space-y-4 hidden">
+
+<div>
+<label class="text-sm text-gray-300">Kompaniya nomi</label>
+<input name="name"
+placeholder="TechStart"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Faoliyat Sohasi</label>
+<input name="industry"
+placeholder="Fintech, AI"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Vebsayti</label>
+<input name="website"
+placeholder="https://company.com"
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+</div>
+
+<!-- SUBMIT -->
+
+<button type="submit"
+class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:opacity-90">
+Ro'yxatdan o'tish
+</button>
+
+</form>
+
+<p class="text-center text-sm text-gray-400 mt-6">
+Akkauntim bor?
+<a href="/login" class="text-blue-400 hover:underline">Kirish</a>
+</p>
+
+</div>
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const studentBtn = document.getElementById("studentBtn")
+const companyBtn = document.getElementById("companyBtn")
+const studentFields = document.getElementById("studentFields")
+const companyFields = document.getElementById("companyFields")
+const roleInput = document.getElementById("role")
+
+studentBtn.onclick = () => {
+
+roleInput.value = "student"
+
+studentFields.classList.remove("hidden")
+companyFields.classList.add("hidden")
+
+studentBtn.classList.add("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+companyBtn.classList.remove("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+
+}
+
+companyBtn.onclick = () => {
+
+roleInput.value = "company"
+
+companyFields.classList.remove("hidden")
+studentFields.classList.add("hidden")
+
+companyBtn.classList.add("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+studentBtn.classList.remove("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+
+}
+
+</script>
+
+</body>
+</html>

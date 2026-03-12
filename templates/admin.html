@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Internova – Boshqaruv Paneli</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+/* Fade animation */
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+.fade-up{
+animation:fadeUp .8s ease forwards;
+}
+
+/* floating */
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+
+.float{
+animation:float 5s ease-in-out infinite;
+}
+
+/* card hover */
+.card{
+transition:all .35s ease;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* glow */
+.glow:hover{
+box-shadow:0 0 25px rgba(96,165,250,.6);
+}
+
+</style>
+
+</head>
+
+
+<body class="min-h-screen bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] text-gray-200 selection:bg-blue-500/40">
+
+
+<!-- NAVBAR -->
+
+<header class="sticky top-0 backdrop-blur-xl bg-white/5 border-b border-white/10">
+
+<div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+
+<div class="flex items-center gap-3 fade-up">
+
+<div class="w-9 h-9 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white float">
+IN
+</div>
+
+<div>
+<p class="font-semibold">Internova</p>
+<p class="text-xs text-gray-400">Boshqaruv Paneli</p>
+</div>
+
+</div>
+
+<nav class="flex gap-8 text-sm">
+
+<button onclick="showPage('overview')" class="navbtn hover:text-blue-400 transition">Umumiy Xolat</button>
+<button onclick="showPage('users')" class="navbtn hover:text-blue-400 transition">Foydalanuvchilar</button>
+<button onclick="showPage('internships')" class="navbtn hover:text-blue-400 transition">Stajirovka</button>
+<button onclick="showPage('analytics')" class="navbtn hover:text-blue-400 transition">Analitika</button>
+
+<a href="/" class="text-red-400 hover:text-red-300 transition">
+Tizimdan Chiqish
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="page fade-up">
+
+<h1 class="text-3xl font-semibold mb-8">Platforma Xolati</h1>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+
+<div class="p-6 rounded-xl bg-white/5 border border-white/10 card glow">
+<p class="text-gray-400 text-sm">Talabalar</p>
+<p class="text-3xl font-semibold mt-2">1,245</p>
+</div>
+
+<div class="p-6 rounded-xl bg-white/5 border border-white/10 card glow">
+<p class="text-gray-400 text-sm">Kompaniyalar</p>
+<p class="text-3xl font-semibold mt-2">86</p>
+</div>
+
+<div class="p-6 rounded-xl bg-white/5 border border-white/10 card glow">
+<p class="text-gray-400 text-sm">Ish o'rinlari</p>
+<p class="text-3xl font-semibold mt-2">214</p>
+</div>
+
+<div class="p-6 rounded-xl bg-white/5 border border-white/10 card glow">
+<p class="text-gray-400 text-sm">Arizalar</p>
+<p class="text-3xl font-semibold mt-2">3,482</p>
+</div>
+
+</div>
+
+
+<div class="grid lg:grid-cols-2 gap-10">
+
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 card fade-up">
+<h2 class="text-lg font-semibold mb-6">Arizalar bo'yicha o'sish</h2>
+
+<div class="relative h-72">
+<canvas id="appsChart"></canvas>
+</div>
+
+</div>
+
+
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 card fade-up">
+<h2 class="text-lg font-semibold mb-6">Foydalanuvchilar taqsimoti</h2>
+
+<div class="relative h-72">
+<canvas id="usersChart"></canvas>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- USERS -->
+
+<section id="users" class="page hidden fade-up">
+
+<h1 class="text-3xl font-semibold mb-8">Foydalanuvchilar boshqaruvi</h1>
+
+<div class="mb-4 flex justify-between">
+
+<input
+type="text"
+placeholder="Search users..."
+class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm focus:outline-none focus:border-blue-500"
+/>
+
+<button class="bg-blue-600 px-4 py-2 rounded-lg text-sm hover:bg-blue-500 transition glow">
+Foydalanuvchi qo'shish
+</button>
+
+</div>
+
+<table class="w-full text-sm">
+
+<thead class="border-b border-white/10 text-gray-400">
+
+<tr>
+<th class="text-left py-3">Ism</th>
+<th>Email pochta</th>
+<th>Vazifasi</th>
+<th>Xolat</th>
+<th>Harakat</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">Ali Khan</td>
+<td>ali@email.com</td>
+<td>Talaba</td>
+<td class="text-green-400">Aktiv</td>
+<td>
+<button class="text-blue-400 hover:text-blue-300">Ko'rish</button>
+</td>
+</tr>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">Tech Corp</td>
+<td>company@email.com</td>
+<td>Kompaniya</td>
+<td class="text-yellow-400">Kutilmoqda</td>
+<td>
+<button class="text-green-400">Tasdiqlash</button>
+</td>
+</tr>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">Admin John</td>
+<td>admin@email.com</td>
+<td>Admin</td>
+<td class="text-green-400">Aktiv</td>
+<td>
+<button class="text-red-400">Olib tashlash</button>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- INTERNSHIPS -->
+
+<section id="internships" class="page hidden fade-up">
+
+<h1 class="text-3xl font-semibold mb-8">Is o'rinlari</h1>
+
+<div class="mb-6 flex justify-between">
+
+<input
+placeholder="Search internship..."
+class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm focus:outline-none focus:border-purple-500"
+/>
+
+<button class="bg-purple-600 px-4 py-2 rounded-lg text-sm hover:bg-purple-500 transition glow">
+Ish o'rinlari qo'shish
+</button>
+
+</div>
+
+<table class="w-full text-sm">
+
+<thead class="border-b border-white/10 text-gray-400">
+
+<tr>
+<th class="text-left py-3">Ish nomi</th>
+<th>Kompaniyasi</th>
+<th>Joylashuvi</th>
+<th>Arizalar</th>
+<th>Xolati</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">AI Research Intern</td>
+<td>DeepMind</td>
+<td>London</td>
+<td>64</td>
+<td class="text-green-400">Qabul ochiq</td>
+</tr>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">Software Engineer</td>
+<td>Google</td>
+<td>Zurich</td>
+<td>112</td>
+<td class="text-green-400">Qabul ochiq</td>
+</tr>
+
+<tr class="border-b border-white/5 hover:bg-white/5 transition">
+<td class="py-4 font-semibold">Data Science</td>
+<td>Amazon</td>
+<td>Berlin</td>
+<td>89</td>
+<td class="text-yellow-400">Ko'rib chiqilmoqda</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- ANALYTICS -->
+
+<section id="analytics" class="page hidden fade-up">
+
+<h1 class="text-3xl font-semibold mb-8">Platforma Taxlili</h1>
+
+<div class="grid lg:grid-cols-2 gap-10">
+
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 card">
+<h2 class="text-lg font-semibold mb-6">Oylik Foydalanuvchilar</h2>
+
+<div class="relative h-72">
+<canvas id="usersGrowth"></canvas>
+</div>
+
+</div>
+
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 card">
+<h2 class="text-lg font-semibold mb-6">Ish o'rinlari kategoriyalari</h2>
+
+<div class="relative h-72">
+<canvas id="categoryChart"></canvas>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* SPA Navigation */
+
+let analyticsLoaded = false;
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.add("hidden")
+})
+
+document.getElementById(page).classList.remove("hidden")
+
+if(page === "analytics" && !analyticsLoaded){
+
+createAnalyticsCharts()
+analyticsLoaded = true
+
+}
+
+}
+
+function createAnalyticsCharts(){
+
+new Chart(document.getElementById("usersGrowth"),{
+type:"bar",
+data:{
+labels:["Yanvar","Fevral","Mart","Aprel","May","Iyun"],
+datasets:[{
+label:"Foydalanuvchilar",
+data:[300,500,800,1000,1200,1500]
+}]
+}
+})
+
+new Chart(document.getElementById("categoryChart"),{
+type:"pie",
+data:{
+labels:["AI","Dasturlash","Axborotlar","Muhandislik"],
+datasets:[{
+data:[45,60,35,25]
+}]
+}
+})
+
+}
+
+
+/* Chart Animations */
+
+const chartOptions={
+animation:{
+duration:1800,
+easing:"easeOutQuart"
+},
+responsive:true
+}
+
+
+new Chart(document.getElementById("appsChart"),{
+type:"line",
+data:{
+labels:["Yanvar","Fevral","Mart","Aprel","May","Iyun"],
+datasets:[{
+label:"Arizalar",
+data:[200,450,600,900,1200,1600],
+borderColor:"#60a5fa",
+tension:0.4
+}]
+},
+options:chartOptions
+})
+
+
+new Chart(document.getElementById("usersChart"),{
+type:"doughnut",
+data:{
+labels:["Talabalar","Kompaniyalar","Adminlar"],
+datasets:[{
+data:[1245,86,4],
+backgroundColor:[
+"#60a5fa",
+"#a78bfa",
+"#f87171"
+]
+}]
+},
+options:chartOptions
+})
+
+
+
+
+</script>
+
+</body>
+</html>

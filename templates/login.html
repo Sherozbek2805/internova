@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internova – Kirish</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] min-h-screen flex items-center justify-center text-gray-200">
+
+<div class="w-full max-w-md">
+
+<div class="flex justify-center items-center gap-2 mb-8">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold">
+▢
+</div>
+<span class="text-lg font-semibold">Internova</span>
+</div>
+
+<div class="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-8 shadow-xl">
+
+<h2 class="text-2xl font-semibold mb-1">Akkauntga kirish</h2>
+<p class="text-gray-400 text-sm mb-6">
+O'zingizning shahsiy kabinetingizga kiring.
+</p>
+
+<div class="flex bg-white/10 rounded-xl p-1 mb-6">
+
+<button type="button" id="studentBtn"
+class="flex-1 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
+Talaba
+</button>
+
+<button type="button" id="companyBtn"
+class="flex-1 py-2 text-gray-400 text-sm">
+Kompaniya
+</button>
+
+<button type="button" id="adminBtn"
+class="flex-1 py-2 text-gray-400 text-sm">
+Admin
+</button>
+
+</div>
+
+<form method="POST" action="/login" class="space-y-4">
+
+<input type="hidden" name="role" id="role" value="student">
+
+<div>
+<label class="text-sm text-gray-300">Pochta Manzil (Email)</label>
+<input
+id="email"
+name="email"
+type="email"
+required
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<div>
+<label class="text-sm text-gray-300">Parol</label>
+<input
+id="password"
+name="password"
+type="password"
+required
+class="mt-1 w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2">
+</div>
+
+<button type="submit" action = "/login"
+class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+Kirish
+</button>
+
+</form>
+
+<p class="text-center text-sm text-gray-400 mt-6">
+Akkauntim yo'q?
+<a href="/signup" class="text-blue-400 hover:underline">Ro'yxatdan o'tish</a>
+</p>
+
+</div>
+</div>
+
+<script>
+
+const studentBtn = document.getElementById("studentBtn")
+const companyBtn = document.getElementById("companyBtn")
+const adminBtn = document.getElementById("adminBtn")
+const roleInput = document.getElementById("role")
+
+function reset(){
+studentBtn.classList.remove("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+companyBtn.classList.remove("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+adminBtn.classList.remove("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+}
+
+studentBtn.onclick = () => {
+reset()
+roleInput.value="student"
+studentBtn.classList.add("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+}
+
+companyBtn.onclick = () => {
+reset()
+roleInput.value="company"
+companyBtn.classList.add("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+}
+
+adminBtn.onclick = () => {
+reset()
+roleInput.value="admin"
+adminBtn.classList.add("bg-gradient-to-r","from-blue-500","to-purple-500","text-white")
+}
+
+</script>
+
+</body>
+</html>

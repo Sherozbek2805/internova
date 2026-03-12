@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Internova</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+
+<body class="bg-gradient-to-br from-[#0b1020] via-[#0f1b3d] to-[#0b1020] text-gray-200 min-h-screen">
+
+
+<!-- NAVBAR -->
+
+<header class="border-b border-white/10 bg-white/5 backdrop-blur-xl">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+<div class="flex items-center gap-3">
+
+<div class="w-9 h-9 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+IN
+</div>
+
+<span class="font-semibold">Internova</span>
+
+</div>
+
+
+<nav class="flex gap-8 text-sm text-gray-300">
+
+<button onclick="showPage('discover')" class="hover:text-white">
+Ish o'rinlari
+</button>
+
+<button onclick="showPage('dashboard')" class="hover:text-white">
+Shahsiy Kabinet
+</button>
+
+<a href="/logout" class="hover:text-red-400">
+Tizimdan chiqish
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+
+<!-- DISCOVER PAGE -->
+
+<div id="discoverPage">
+
+<h1 class="text-3xl font-semibold mb-8">
+Stajirovka qidirish
+</h1>
+
+<div class="space-y-6">
+
+
+<!-- CARD -->
+
+<div class="flex items-center justify-between p-6 rounded-2xl border border-white/10 bg-white/5">
+
+<div>
+
+<h3 class="text-lg font-semibold">
+Software Engineering Intern
+</h3>
+
+<p class="text-gray-400 text-sm">
+TechStart Inc
+</p>
+
+<div class="flex gap-3 text-xs mt-2 text-gray-400">
+
+<span>📍 Online</span>
+<span class="px-2 py-1 bg-white/10 rounded">Ish haqi to'lanadigan</span>
+
+</div>
+
+</div>
+
+
+<a href="/apply"
+class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
+
+Ishga topshirish
+
+</a>
+
+</div>
+
+
+
+<div class="flex items-center justify-between p-6 rounded-2xl border border-white/10 bg-white/5">
+
+<div>
+
+<h3 class="text-lg font-semibold">
+Data Analyst Intern
+</h3>
+
+<p class="text-gray-400 text-sm">
+FinTech Lab
+</p>
+
+<div class="flex gap-3 text-xs mt-2 text-gray-400">
+
+<span>📍 Nyu-York</span>
+<span class="px-2 py-1 bg-white/10 rounded">Ish haqi to'lanadigan</span>
+
+</div>
+
+</div>
+
+
+<a href="/apply" class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
+
+Ishga topshirish
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- DASHBOARD PAGE -->
+
+<div id="dashboardPage" class="hidden">
+
+<h1 class="text-3xl font-semibold mb-8">
+    Talaba kabineti
+</h1>
+
+
+<h2 class="text-xl font-semibold mb-4">
+Sizning Arizangiz
+</h2>
+
+
+<div class="overflow-x-auto">
+
+<table class="w-full text-sm">
+
+<thead class="text-gray-400 border-b border-white/10">
+
+<tr>
+
+<th class="text-left py-3">
+Stajirovka nomi
+</th>
+
+<th>
+Kompaniyasi
+</th>
+
+<th>
+Xolat
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr class="border-b border-white/5">
+
+<td class="py-3">
+Frontend Intern
+</td>
+
+<td class="text-gray-400">
+Startup X
+</td>
+
+<td>
+
+<span class="text-yellow-400 text-xs">
+Ko'rib chiqilmoqda
+</span>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+function showPage(page){
+
+const discover = document.getElementById("discoverPage")
+const dashboard = document.getElementById("dashboardPage")
+
+discover.classList.add("hidden")
+dashboard.classList.add("hidden")
+
+if(page === "discover"){
+discover.classList.remove("hidden")
+}
+
+if(page === "dashboard"){
+dashboard.classList.remove("hidden")
+}
+
+}
+
+</script>
+
+
+
+</body>
+</html>
